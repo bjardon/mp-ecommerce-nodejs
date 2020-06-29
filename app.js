@@ -66,7 +66,7 @@ app.get('/detail', function (req, res) {
   mercadopago.preferences.create(preference).then((response) => {
     const data = {
       product: product,
-      init_point: response.body.init_point
+      init_point: response.body.sandbox_init_point
     };
 
     console.log(response.body);
