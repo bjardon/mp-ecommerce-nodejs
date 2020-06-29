@@ -44,6 +44,8 @@ app.post('/purchase', function(req, res) {
     unit_price: parseFloat(req.body.unit_price),
   };
   
+  console.log(product);
+
   const preference = {
     items: [ product ],
     payer: {
@@ -80,7 +82,8 @@ app.post('/purchase', function(req, res) {
   };
 
   mercadopago.preferences.create(preference).then((response) => {
-    console.log(`The preference_id is: ${response.body.id}`);
+    console.log(`The preference_id is: ${response.body.id} --------------------------`);
+    console.log(response.body);
     res.redirect(response.body.init_point);
   });
 })
