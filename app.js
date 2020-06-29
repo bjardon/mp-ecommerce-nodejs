@@ -14,6 +14,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/', function (req, res) {
   res.render('home');
@@ -79,7 +80,7 @@ app.post('/purchase', function(req, res) {
   };
 
   mercadopago.preferences.create(preference).then((response) => {
-    console.log(response.body);
+    console.log(`The preference_id is: ${response.body.id}`);
     res.redirect(response.body.init_point);
   });
 })
@@ -97,6 +98,7 @@ app.get('/pending', function(req, res) {
 });
 
 app.post('/notificate', function(req, res) {
+  console.log('Notification received! ---------------------------------');
   console.log(req.body);
 
   res.sendStatus(200);
