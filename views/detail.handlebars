@@ -61,14 +61,13 @@
                 <h3>{{ product.unit_price }}</h3>
                 <h3>{{ product.quantity }}</h3>
               </div>
-              <form action="/procesar-pago" method="POST">
-                <script src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js" data-preference-id="{{id}}"></script>
-              </form>
-              <a href="{{ pref.init_point }}">Pagar</a>
-
-              {{!-- <form action="{{ init_point }}" method="GET" target="_blank">
+              <form action="/purchase" method="POST">
+                <input type="hidden" name="title" value="{{ product.title }}">
+                <input type="hidden" name="picture_url" value="{{ product.picture_url }}">
+                <input type="hidden" name="quantity" value="{{ product.quantity }}">
+                <input type="hidden" name="unit_price" value="{{ product.unit_price }}">
                 <button type="submit" class="mercadopago-button">Pagar la compra</button>
-              </form> --}}
+              </form>
             </div>
           </div>
         </div>
