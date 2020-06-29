@@ -5,7 +5,10 @@ var mercadopago = require('mercadopago');
 var app = express();
 const port = process.env.PORT || 3000;
 
-mercadopago.configure({access_token: 'APP_USR-8058997674329963-062418-89271e2424bb1955bc05b1d7dd0977a8-592190948'});
+mercadopago.configure({
+  access_token: 'APP_USR-8058997674329963-062418-89271e2424bb1955bc05b1d7dd0977a8-592190948',
+  integrator_id: 'dev_24c65fb163bf11ea96500242ac130004'
+});
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
