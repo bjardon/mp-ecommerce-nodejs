@@ -21,14 +21,26 @@ app.get('/', function (req, res) {
 
 app.get('/detail', function (req, res) {
   const product = {
-    id: '1234',
     title: req.query.title,
-    currency_id: 'MXN',
     picture_url: req.query.img,
-    description: 'Dispositivo móvil de Tienda e-commerce​',
-    category_id: 'phones',
     quantity: parseInt(req.query.unit),
     unit_price: parseFloat(req.query.price),
+  };
+
+  const data = { product: product };
+  res.render('detail', data);
+});
+
+app.post('/purchase', function(req, res) {
+  const product = {
+    id: '1234',
+    title: req.body.title,
+    currency_id: 'MXN',
+    picture_url: req.body.picture_url,
+    description: 'Dispositivo móvil de Tienda e-commerce​',
+    category_id: 'phones',
+    quantity: parseInt(req.body.quantity),
+    unit_price: parseFloat(req.body.unit_price),
   };
   
   const preference = {
@@ -65,18 +77,12 @@ app.get('/detail', function (req, res) {
     auto_return: 'approved',
     notification_url: 'https://bjardon-mp-ecommerce-nodejs.herokuapp.com/notificate'
   };
-  
-  mercadopago.preferences.create(preference).then((response) => {
-    const data = {
-      product: product,
-      pref: response.body
-    };
 
+  mercadopago.preferences.create(preference).then((response) => {
     console.log(response.body);
-    
-    res.render('detail', data);
+    res.redirect(response.body.init_point);
   });
-});
+})
 
 app.get('/success', function(req, res) {
   res.render('success', req.query);
