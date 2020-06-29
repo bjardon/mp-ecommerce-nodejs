@@ -38,7 +38,7 @@ app.post('/purchase', function(req, res) {
     title: req.body.title,
     currency_id: 'MXN',
     picture_url: `https://bjardon-mp-ecommerce-nodejs.herokuapp.com/${req.body.picture_url.replace('./', '')}`,
-    description: 'Dispositivo móvil de Tienda e-commerce​',
+    description: 'Dispositivo móvil de Tienda e-commerce',
     category_id: 'phones',
     quantity: parseInt(req.body.quantity),
     unit_price: parseFloat(req.body.unit_price),
@@ -59,7 +59,7 @@ app.post('/purchase', function(req, res) {
       address: {
         street_name: 'Insurgentes Sur',
         street_number: 1602,
-        zip_code: '0394​0'
+        zip_code: '03940'
       }
     },
     payment_methods: {
