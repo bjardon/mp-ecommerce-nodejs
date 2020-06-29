@@ -61,13 +61,29 @@ app.get('/detail', function (req, res) {
       product: product,
       init_point: response.body.init_point
     };
+
+    console.log(response.body);
     
     res.render('detail', data);
   });
 });
 
-app.post('/purchase', function(req, res) {
-  
+app.get('/success', function(req, res) {
+  res.render('success', req.query);
+});
+
+app.get('/failure', function(req, res) {
+  res.render('failure');
+});
+
+app.get('/pending', function(req, res) {
+  res.render('pending');
+});
+
+app.post('/notificate', function(req, res) {
+  console.log(req.body);
+
+  res.sendStatus(200);
 });
 
 app.use(express.static('assets'));
