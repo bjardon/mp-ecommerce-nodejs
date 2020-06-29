@@ -54,6 +54,13 @@ app.get('/detail', function (req, res) {
       installments: 6
     },
     external_reference: "bjardon97@gmail.com",
+    back_urls: {
+      success: 'https://bjardon-mp-ecommerce-nodejs.herokuapp.com/success',
+      failure: 'https://bjardon-mp-ecommerce-nodejs.herokuapp.com/failure',
+      pending: 'https://bjardon-mp-ecommerce-nodejs.herokuapp.com/pending'
+    },
+    auto_return: 'approved',
+    notification_url: 'https://bjardon-mp-ecommerce-nodejs.herokuapp.com/notificate'
   };
   
   mercadopago.preferences.create(preference).then((response) => {
