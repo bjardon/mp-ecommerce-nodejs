@@ -37,7 +37,7 @@ app.post('/purchase', function(req, res) {
     id: '1234',
     title: req.body.title,
     currency_id: 'MXN',
-    picture_url: req.body.picture_url,
+    picture_url: `https://bjardon-mp-ecommerce-nodejs.herokuapp.com/${req.body.picture_url.replace('./', '')}`,
     description: 'Dispositivo móvil de Tienda e-commerce​',
     category_id: 'phones',
     quantity: parseInt(req.body.quantity),
