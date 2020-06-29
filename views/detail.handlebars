@@ -64,6 +64,7 @@
               <form action="/procesar-pago" method="POST">
                 <script src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js" data-preference-id="{{id}}"></script>
               </form>
+              <a href="{{ pref.init_point }}">Pagar</a>
 
               {{!-- <form action="{{ init_point }}" method="GET" target="_blank">
                 <button type="submit" class="mercadopago-button">Pagar la compra</button>
